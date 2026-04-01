@@ -1,25 +1,19 @@
-import React, { Suspense } from "react";
-import Book from "../Book/Book";
-
+import React, { Suspense } from 'react';
+import Boi from '../Boi/Boi';
 
 const Books = ({data}) => {
-//   console.log(data);
-  // const [allBooks,setAllBooks]=useState([])
-  // useEffect(()=>{
-  //     fetch('https://raw.githubusercontent.com/ProgrammingHero1/boi-poka-Book-Vibe-Resources/refs/heads/main/data/booksData.json')
-  //     .then(res=>res.json())
-  //     .then(data=>setAllBooks(data))
-  // },[])
-//   const bookPromise=fetch('https://raw.githubusercontent.com/ProgrammingHero1/boi-poka-Book-Vibe-Resources/refs/heads/main/data/booksData.json')
-//   .then(res=>res.json());
   return (
     <div>
-      <h1 className="text-3xl text-center p-6">Books is here</h1>
-      <Suspense fallback={<span>Loading....</span>}>
-     {
-        data.map((singleBook=> <Book singleBook={singleBook}></Book>))
-     }
+      <h1 className='text-3xl text-center p-6'>Books</h1>
+      <Suspense fallback={ <span>loading...</span>}>
+     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
+       {
+        data.map((singlebook)=> <Boi key={singlebook.bookId} singlebook={singlebook}></Boi>)
+      }
+     </div>
+
       </Suspense>
+      
     </div>
   );
 };
