@@ -10,6 +10,7 @@ const Books = ({data}) => {
        {
         data.map((singlebook)=> <Boi key={singlebook.bookId} singlebook={singlebook}></Boi>)
       }
+    
      </div>
 
       </Suspense>
