@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router';
+import { addToStoredDB } from '../../../utility/addToDB';
 
 const BookDetails = () => {
     const {id}=useParams();
@@ -10,13 +11,17 @@ const singleBook=data.find(book=>book.bookId===bookId);
 // console.log(singleBook);
 // console.log(id)
 const {bookName,image}=singleBook;
+const handleMarkAsRead=(id)=>{
+    addToStoredDB(id);
+
+}
 
     return (
         <div className=' w-2/3 mx-auto'>
             <img className='w-48' src={image} alt="" />
             <h5>{bookName}</h5>
-            <button className='btn btn-accent m-2'>Read</button>
-            <button className='btn btn-info m-2'>Wishlist</button>
+            <button onClick={()=>handleMarkAsRead(id)} className='btn btn-accent m-2'>Mark As Read</button>
+            <button className='btn btn-info m-2'>Add To Wishlist</button>
         </div>
     );
 };
